@@ -219,6 +219,9 @@ class Line(object):
         # --------------------------------------------------------------
         self.start = start.clone()
         self.end = end.clone()
+        self.clonecounts = 0
+        os = self.start
+        oe = self.end
         # DONE: 3.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
@@ -489,7 +492,7 @@ class Line(object):
         """
         # --------------------------------------------------------------
         return self.clonecounts
-        # TODO: 8.
+        # DONE: 8.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -523,7 +526,13 @@ class Line(object):
           :rtype: Line:
         """
         # --------------------------------------------------------------
-        # TODO: 9.
+        soxs = self.start.x + other_line.start.x
+        soys = self.start.y + other_line.start.y
+        soxe = self.end.x + other_line.end.x
+        soye = self.end.y + other_line.end.y
+        return Line(Point(soxs,soys),Point(soxe,soye))
+
+        # DONE: 9.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -557,7 +566,12 @@ class Line(object):
           :rtype: Line:
         """
         # --------------------------------------------------------------
-        # TODO: 10.
+        doxs = self.start.x - other_line.start.x
+        doys = self.start.y - other_line.start.y
+        doxe = self.end.x - other_line.end.x
+        doye = self.end.y - other_line.end.y
+        return Line(Point(doxs, doys), Point(doxe, doye))
+        # DONE: 10.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -584,7 +598,11 @@ class Line(object):
           :rtype: Point
         """
         # --------------------------------------------------------------
-        # TODO: 11.
+        mx = (self.start.x + self.end.x)/2
+        my = (self.start.y + self.end.y)/2
+        return Point(mx,my)
+
+        # DONE: 11.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -620,7 +638,12 @@ class Line(object):
           :rtype: bool
         """
         # --------------------------------------------------------------
-        # TODO: 12.
+        if round(self.slope(),12) == round(line2.slope(),12):
+            return True
+        else:
+            return False
+
+        # DONE: 12.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -685,6 +708,9 @@ class Line(object):
             print(line2)  # Should print: Line[(0, 1), (10, 20)]
         """
         # --------------------------------------------------------------
+        self.start = os
+        self.end = oe
+        
         # TODO: 13.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
