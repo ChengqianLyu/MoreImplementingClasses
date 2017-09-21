@@ -328,10 +328,12 @@ class Line(object):
           :rtype: Line
         """
         # --------------------------------------------------------------
+        p1 = self.start
+        p2 = self.end
+        self.clonecounts = self.clonecounts + 1
+        return Line(p1,p2)
 
-
-
-        # TODO: 4.
+        # DONE: 4.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -364,7 +366,12 @@ class Line(object):
             print(line1 == line2)    # Should now print: True
         """
         # --------------------------------------------------------------
-        # TODO: 5.
+        a = self.start
+        b = self.end
+        self.end = a
+        self.start = b
+
+        # DONE : 5.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -400,7 +407,14 @@ class Line(object):
           :rtype: float
         """
         # --------------------------------------------------------------
-        # TODO: 6.
+        dx = self.end.x - self.start.x
+        dy = self.end.y - self.start.y
+        if dx == 0:
+            return math.inf
+        else:
+            return dy/dx
+
+        # DONE: 6.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -433,7 +447,8 @@ class Line(object):
           :rtype: float
         """
         # --------------------------------------------------------------
-        # TODO: 7.
+        return math.sqrt((self.end.x - self.start.x)**2 + (self.end.y - self.start.y)**2)
+        # DONE: 7.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -473,6 +488,7 @@ class Line(object):
           :rtype: int:
         """
         # --------------------------------------------------------------
+        return self.clonecounts
         # TODO: 8.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
