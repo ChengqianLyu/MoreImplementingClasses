@@ -219,9 +219,10 @@ class Line(object):
         # --------------------------------------------------------------
         self.start = start.clone()
         self.end = end.clone()
+        self.os = self.start.clone()
+        self.oe = self.end.clone()
         self.clonecounts = 0
-        os = self.start
-        oe = self.end
+
         # DONE: 3.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
@@ -708,9 +709,9 @@ class Line(object):
             print(line2)  # Should print: Line[(0, 1), (10, 20)]
         """
         # --------------------------------------------------------------
-        self.start = os
-        self.end = oe
-        
+        self.start = self.os
+        self.end =self.oe
+
         # TODO: 13.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
